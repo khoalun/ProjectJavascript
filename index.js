@@ -307,7 +307,20 @@
 
 
 var readlineSync = require('readline-sync');
-var listProducts = [];
+var listProducts = [{
+        name: "apple",
+
+        Price: 60000
+
+    },
+    {
+        name: "orange",
+
+        Price: 30000
+
+    }
+
+];
 
 while (true) {
     menu();
@@ -320,6 +333,10 @@ while (true) {
             break;
         case 2:
             console.log('lua chon 2');
+            hienThiSanPham(listProducts);
+        case 3:
+            console.log('lua chon 3');
+            xoaSanPhamTheoTen(listProducts);
         case 0:
             return;
         default:
@@ -360,4 +377,26 @@ function menu() {
     console.log('Hiển thị ra 3 sản phẩm có số lượng nhiều nhất trong kho ');
     console.log('Xuất dữ liệu ra file excel  ');
     console.log('Thoát chương trình ');
+}
+
+function hienThiSanPham(products) {
+    for (i = 0; i < products.length; i++) {
+
+        console.log(" Id " + products[i].id + " Name " + products[i].name + " Quantity: " + products[i].quantity + " Price " + products[i].price + " Date " + products[i].date);
+    }
+
+
+}
+
+function xoaSanPhamTheoTen(baseProductLists) {
+    var name = readlineSync.question(' Name: ');
+    console.log(name);
+    var index = -1;
+    for (var i = 0; i < baseProductLists.length; i++) {
+        if (baseProductLists[i].name == name) {
+            index = i;
+        }
+
+    }
+    console.log(' Index ' + index);
 }
