@@ -310,13 +310,20 @@ var readlineSync = require('readline-sync');
 var listProducts = [{
         name: "apple",
 
-        Price: 60000
+        price: 60000
 
     },
     {
         name: "orange",
 
-        Price: 30000
+        price: 30000
+
+    },
+    {
+        name: "mango",
+
+        price: 40000
+
 
     }
 
@@ -334,9 +341,24 @@ while (true) {
         case 2:
             console.log('lua chon 2');
             hienThiSanPham(listProducts);
+            var luachon = readlineSync.question('Ban co muon tiep tuc ko? tiep tuc an y con ko an n ');
+            if (luachon == 'y') {
+                break;
+            } else {
+                return;
+            }
+
         case 3:
             console.log('lua chon 3');
-            xoaSanPhamTheoTen(listProducts);
+            listProducts = xoaSanPhamTheoTen(listProducts);
+            hienThiSanPham(listProducts);
+            break;
+
+        case 4:
+            console.log('lua chon 4');
+            listProducts = sapXeptheoGiaTien(listProducts);
+            console.log(listProducts);
+            break;
         case 0:
             return;
         default:
@@ -345,25 +367,25 @@ while (true) {
     }
 }
 
-function addNewProduct(baseProductLists) {
-    console.log('Nhap thong tin san pham');
-    var addName = readlineSync.question('Name: ');
-    var addId = readlineSync.question('ID: ');
-    var addQuantity = readlineSync.question('Quantity: ');
-    var addPrice = readlineSync.question('Price: ');
-    var addDate = readlineSync.question('Date: ');
+// function addNewProduct(baseProductLists) {
+//     console.log('Nhap thong tin san pham');
+//     var addName = readlineSync.question('Name: ');
+//     var addId = readlineSync.question('ID: ');
+//     var addQuantity = readlineSync.question('Quantity: ');
+//     var addPrice = readlineSync.question('Price: ');
+//     var addDate = readlineSync.question('Date: ');
 
-    var newProduct = {
-        name: addName,
-        id: addId,
-        quantity: addQuantity,
-        price: addPrice,
-        date: addDate
+//     var newProduct = {
+//         name: addName,
+//         id: addId,
+//         quantity: addQuantity,
+//         price: addPrice,
+//         date: addDate
 
-    };
-    baseProductLists.push(newProduct);
-    return baseProductLists;
-}
+//     };
+//     baseProductLists.push(newProduct);
+//     return baseProductLists;
+// }
 
 
 function menu() {
@@ -396,7 +418,21 @@ function xoaSanPhamTheoTen(baseProductLists) {
         if (baseProductLists[i].name == name) {
             index = i;
         }
+        if (i != -1) {
+            baseProductLists.splice(index, 1);
+        } else {
+            console.log('Khong ton tai san pham nay');
+        }
+        return baseProductLists;
 
     }
-    console.log(' Index ' + index);
+}
+
+function sapXeptheoGiaTien(baseProductLists) {
+    baseProductLists.sort(function(a, b) {
+        return a.price - b.price;
+    });
+
+    return baseProductLists;
+
 }
