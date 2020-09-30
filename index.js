@@ -359,6 +359,10 @@ while (true) {
             listProducts = sapXeptheoGiaTien(listProducts);
             console.log(listProducts);
             break;
+        case 5:
+            console.log('Sap xep theo thoi gian');
+            sapXeptheoThoiGian(listProducts);
+            console.log(listProducts);
         case 0:
             return;
         default:
@@ -367,25 +371,25 @@ while (true) {
     }
 }
 
-// function addNewProduct(baseProductLists) {
-//     console.log('Nhap thong tin san pham');
-//     var addName = readlineSync.question('Name: ');
-//     var addId = readlineSync.question('ID: ');
-//     var addQuantity = readlineSync.question('Quantity: ');
-//     var addPrice = readlineSync.question('Price: ');
-//     var addDate = readlineSync.question('Date: ');
+// // function addNewProduct(baseProductLists) {
+// //     console.log('Nhap thong tin san pham');
+// //     var addName = readlineSync.question('Name: ');
+// //     var addId = readlineSync.question('ID: ');
+// //     var addQuantity = readlineSync.question('Quantity: ');
+// //     var addPrice = readlineSync.question('Price: ');
+// //     var addDate = readlineSync.question('Date: ');
 
-//     var newProduct = {
-//         name: addName,
-//         id: addId,
-//         quantity: addQuantity,
-//         price: addPrice,
-//         date: addDate
+// //     var newProduct = {
+// //         name: addName,
+// //         id: addId,
+// //         quantity: addQuantity,
+// //         price: addPrice,
+// //         date: addDate
 
-//     };
-//     baseProductLists.push(newProduct);
-//     return baseProductLists;
-// }
+// //     };
+// //     baseProductLists.push(newProduct);
+// //     return baseProductLists;
+// // }
 
 
 function menu() {
@@ -435,4 +439,25 @@ function sapXeptheoGiaTien(baseProductLists) {
 
     return baseProductLists;
 
+}
+
+function sapXeptheoThoiGian(baseProductLists) {
+    baseProductLists.sort(function(a, b) {
+        var Str1 = chuyenDoiDinhDangNgayThang(a.date);
+        var Str2 = chuyenDoiDinhDangNgayThang(b.date);
+        var date1 = new Date(Str1);
+        var date2 = new Date(Str2);
+        return date1.getTime - date2.getTime;
+    });
+    console.log(baseProductLists);
+    return baseProductLists;
+}
+
+function chuyenDoiDinhDangNgayThang(base) {
+    var newformat = base.split("/");
+    newformat = newformat.reverse();
+    newformat = newformat.join("-");
+    console.log(newformat);
+
+    return newformat;
 }
