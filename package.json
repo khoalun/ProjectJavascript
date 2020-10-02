@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/khoalun/JavascriptBasic#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
     "readline-sync": "^1.4.10",
-    "readme-sync": "0.0.18"
+    "readme-sync": "0.0.18",
+    "table": "^6.0.3"
   }
 }

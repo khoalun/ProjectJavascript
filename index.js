@@ -310,19 +310,30 @@ var readlineSync = require('readline-sync');
 var listProducts = [{
         name: "apple",
 
-        price: 60000
+        price: 60000,
 
+        quantity: 20,
+
+        date: "23/2/2019",
     },
     {
         name: "orange",
 
-        price: 30000
+        price: 30000,
+
+        quantity: 50,
+
+        date: "24/6/2017"
 
     },
     {
         name: "mango",
 
-        price: 40000
+        price: 40000,
+
+        quantity: 100,
+
+        date: "23/4/2018"
 
 
     }
@@ -361,8 +372,8 @@ while (true) {
             break;
         case 5:
             console.log('Sap xep theo thoi gian');
-            sapXeptheoThoiGian(listProducts);
-            console.log(listProducts);
+            listProducts = sapXepTheoThoiGian(listProducts);
+            break;
         case 0:
             return;
         default:
@@ -441,23 +452,49 @@ function sapXeptheoGiaTien(baseProductLists) {
 
 }
 
-function sapXeptheoThoiGian(baseProductLists) {
+function sapXepTheoThoiGian(baseProductLists) {
     baseProductLists.sort(function(a, b) {
-        var Str1 = chuyenDoiDinhDangNgayThang(a.date);
-        var Str2 = chuyenDoiDinhDangNgayThang(b.date);
-        var date1 = new Date(Str1);
-        var date2 = new Date(Str2);
-        return date1.getTime - date2.getTime;
+        var strDate1 = chuyenDoiDinhDangNgayThang(a.date);
+        var strDate2 = chuyenDoiDinhDangNgayThang(b.date);
+        var date1 = new Date(strDate1);
+        var date2 = new Date(strDate2);
+
+        return date1.getTime() - date2.getTime();
     });
     console.log(baseProductLists);
+
     return baseProductLists;
 }
 
 function chuyenDoiDinhDangNgayThang(base) {
-    var newformat = base.split("/");
-    newformat = newformat.reverse();
-    newformat = newformat.join("-");
-    console.log(newformat);
+    var newFormat = base.split("/");
+    newFormat = newFormat.reverse();
+    newFormat = newFormat.join("-");
 
-    return newformat;
+    return newFormat;
 }
+
+//c1
+function tongTien() {
+    var sumMoney = 0;
+
+    sumMoney = listProducts.reduce(function(a, b) {
+        return a + (b.quantity * b.price);
+    }, 0);
+    console.log(sumMoney);
+    return sumMoney;
+}
+tongTien(listProducts);
+
+//c2 
+function tinhTongTien(Total) {
+    var sum = 0;
+
+    for (var i = 0; i < Total.length; i++) {
+        sum += Total[i].price * Total[i].quantity;
+    }
+    console.log(sum);
+    return tinhTongTien;
+
+}
+tinhTongTien(listProducts);
