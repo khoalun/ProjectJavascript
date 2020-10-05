@@ -336,165 +336,234 @@ var listProducts = [{
         date: "23/4/2018"
 
 
+    },
+    {
+        name: "banana",
+
+        price: 40000,
+
+        quantity: 40,
+
+        date: "23/4/2018"
+
+
     }
 
 ];
 
-while (true) {
-    menu();
-    var select = parseInt(readlineSync.question('Nhap lua chon : '));
-    switch (select) {
-        case 1:
-            console.log('lua chon 1');
-            listProducts = addNewProduct(listProducts);
-            console.log(listProducts);
-            break;
-        case 2:
-            console.log('lua chon 2');
-            hienThiSanPham(listProducts);
-            var luachon = readlineSync.question('Ban co muon tiep tuc ko? tiep tuc an y con ko an n ');
-            if (luachon == 'y') {
-                break;
-            } else {
-                return;
-            }
+// while (true) {
+//     menu();
+//     var select = parseInt(readlineSync.question('Nhap lua chon : '));
+//     switch (select) {
+//         case 1:
+//             console.log('lua chon 1');
+//             listProducts = addNewProduct(listProducts);
+//             console.log(listProducts);
+//             break;
+//         case 2:
+//             console.log('lua chon 2');
+//             hienThiSanPham(listProducts);
+//             var luachon = readlineSync.question('Ban co muon tiep tuc ko? tiep tuc an y con ko an n ');
+//             if (luachon == 'y') {
+//                 break;
+//             } else {
+//                 return;
+//             }
 
-        case 3:
-            console.log('lua chon 3');
-            listProducts = xoaSanPhamTheoTen(listProducts);
-            hienThiSanPham(listProducts);
-            break;
+//         case 3:
+//             console.log('lua chon 3');
+//             listProducts = xoaSanPhamTheoTen(listProducts);
+//             hienThiSanPham(listProducts);
+//             break;
 
-        case 4:
-            console.log('lua chon 4');
-            listProducts = sapXeptheoGiaTien(listProducts);
-            console.log(listProducts);
-            break;
-        case 5:
-            console.log('Sap xep theo thoi gian');
-            listProducts = sapXepTheoThoiGian(listProducts);
-            break;
-        case 0:
-            return;
-        default:
-            console.log('lua chon ko hop le ');
-            break;
+//         case 4:
+//             console.log('lua chon 4');
+//             listProducts = sapXeptheoGiaTien(listProducts);
+//             console.log(listProducts);
+//             break;
+//         case 5:
+//             console.log('Sap xep theo thoi gian');
+//             listProducts = sapXepTheoThoiGian(listProducts);
+//             break;
+//         case 6:
+//             console.log('Tinh Tong Tien');
+//             listProducts = tinhTongTien(listProducts);
+//         case 0:
+//             return;
+//         default:
+//             console.log('lua chon ko hop le ');
+//             break;
+//     }
+// }
+
+// // // function addNewProduct(baseProductLists) {
+// // //     console.log('Nhap thong tin san pham');
+// // //     var addName = readlineSync.question('Name: ');
+// // //     var addId = readlineSync.question('ID: ');
+// // //     var addQuantity = readlineSync.question('Quantity: ');
+// // //     var addPrice = readlineSync.question('Price: ');
+// // //     var addDate = readlineSync.question('Date: ');
+
+// // //     var newProduct = {
+// // //         name: addName,
+// // //         id: addId,
+// // //         quantity: addQuantity,
+// // //         price: addPrice,
+// // //         date: addDate
+
+// // //     };
+// // //     baseProductLists.push(newProduct);
+// // //     return baseProductLists;
+// // // }
+
+
+// function menu() {
+//     console.log('Thêm sản phẩm');
+//     console.log('Hiển thị tất cả sản phẩm trong kho');
+//     console.log('Xóa sản phẩm trong kho ');
+//     console.log('Sắp xếp sản phẩm theo ngày tháng và hiển thị ra màn hình');
+//     console.log('Sắp xếp sản phẩm theo giá tiền và hiển thị ra màn hình ');
+//     console.log('Tính tổng tiền các sản phẩm trong kho');
+//     console.log('Đếm xem có bao nhiêu sản phẩm giá bằng nhau và hiển thị ra màn hình');
+//     console.log('Hiển thị ra 3 sản phẩm có số lượng nhiều nhất trong kho ');
+//     console.log('Xuất dữ liệu ra file excel  ');
+//     console.log('Thoát chương trình ');
+// }
+
+// function hienThiSanPham(products) {
+//     for (i = 0; i < products.length; i++) {
+
+//         console.log(" Id " + products[i].id + " Name " + products[i].name + " Quantity: " + products[i].quantity + " Price " + products[i].price + " Date " + products[i].date);
+//     }
+
+
+// }
+
+// function xoaSanPhamTheoTen(baseProductLists) {
+//     var name = readlineSync.question(' Name: ');
+//     console.log(name);
+//     var index = -1;
+//     for (var i = 0; i < baseProductLists.length; i++) {
+//         if (baseProductLists[i].name == name) {
+//             index = i;
+//         }
+//         if (i != -1) {
+//             baseProductLists.splice(index, 1);
+//         } else {
+//             console.log('Khong ton tai san pham nay');
+//         }
+//         return baseProductLists;
+
+//     }
+// }
+
+// function sapXeptheoGiaTien(baseProductLists) {
+//     baseProductLists.sort(function(a, b) {
+//         return a.price - b.price;
+//     });
+
+//     return baseProductLists;
+
+// }
+
+// function sapXepTheoThoiGian(baseProductLists) {
+//     baseProductLists.sort(function(a, b) {
+//         var strDate1 = chuyenDoiDinhDangNgayThang(a.date);
+//         var strDate2 = chuyenDoiDinhDangNgayThang(b.date);
+//         var date1 = new Date(strDate1);
+//         var date2 = new Date(strDate2);
+
+//         return date1.getTime() - date2.getTime();
+//     });
+//     console.log(baseProductLists);
+
+//     return baseProductLists;
+// }
+
+// function chuyenDoiDinhDangNgayThang(base) {
+//     var newFormat = base.split("/");
+//     newFormat = newFormat.reverse();
+//     newFormat = newFormat.join("-");
+
+//     return newFormat;
+// }
+
+// //c1
+// function tongTien() {
+//     var sumMoney = 0;
+
+//     sumMoney = listProducts.reduce(function(a, b) {
+//         return a + (b.quantity * b.price);
+//     }, 0);
+//     console.log(sumMoney);
+//     return sumMoney;
+// }
+// // tongTien(listProducts);
+
+// //c2 
+// function tinhTongTien(Total) {
+//     var sum = 0;
+
+//     for (var i = 0; i < Total.length; i++) {
+//         sum += Total[i].price * Total[i].quantity;
+//     }
+//     console.log(sum);
+//     return tinhTongTien;
+
+// }
+// tinhTongTien(listProducts);
+
+// function hienThiTheoTungGiaTien(Total) {
+//     var cacLoaiGiaTien = [];
+//     for (i = 0; i < Total.length; i++) {
+//         if (cacLoaiGiaTien.indexOf(Total[i].price) == -1) {
+
+//             cacLoaiGiaTien.push(Total[i].price);
+//         }
+//     }
+//     for (i = 0; i < cacLoaiGiaTien.length; i++) {
+//         for (j = 0; j < Total.length; j++) {
+//             if (cacLoaiGiaTien[i] == Total[j].price) {
+//                 console.log("Gia tien " + cacLoaiGiaTien[i] + " $ : " + Total[j].name);
+
+
+//             }
+
+//         }
+
+//     }
+
+// }
+
+// hienThiTheoTungGiaTien(listProducts);
+
+
+// function sanPhamNhieuNhatKho(Products) {
+//     Products.sort(function(a, b) {
+//         return b.quantity - a.quantity;
+//     });
+//     var result = [];
+//     result.push(Products[0]);
+//     result.push(Products[1]);
+//     result.push(Products[2]);
+
+//     console.log(result);
+// }
+// sanPhamNhieuNhatKho(listProducts);
+
+
+function xuatFileExCel(Product) {
+    var data = "";
+    for (var i = 0; i < Product.length; i++) {
+        data += Product[i].name + "\t";
+        data += Product[i].price + "\t";
+        data += Product[i].quantity + "\t";
+        data += Product[i].date + +"\n";
     }
-}
-
-// // function addNewProduct(baseProductLists) {
-// //     console.log('Nhap thong tin san pham');
-// //     var addName = readlineSync.question('Name: ');
-// //     var addId = readlineSync.question('ID: ');
-// //     var addQuantity = readlineSync.question('Quantity: ');
-// //     var addPrice = readlineSync.question('Price: ');
-// //     var addDate = readlineSync.question('Date: ');
-
-// //     var newProduct = {
-// //         name: addName,
-// //         id: addId,
-// //         quantity: addQuantity,
-// //         price: addPrice,
-// //         date: addDate
-
-// //     };
-// //     baseProductLists.push(newProduct);
-// //     return baseProductLists;
-// // }
-
-
-function menu() {
-    console.log('Thêm sản phẩm');
-    console.log('Hiển thị tất cả sản phẩm trong kho');
-    console.log('Xóa sản phẩm trong kho ');
-    console.log('Sắp xếp sản phẩm theo ngày tháng và hiển thị ra màn hình');
-    console.log('Sắp xếp sản phẩm theo giá tiền và hiển thị ra màn hình ');
-    console.log('Tính tổng tiền các sản phẩm trong kho');
-    console.log('Đếm xem có bao nhiêu sản phẩm giá bằng nhau và hiển thị ra màn hình');
-    console.log('Hiển thị ra 3 sản phẩm có số lượng nhiều nhất trong kho ');
-    console.log('Xuất dữ liệu ra file excel  ');
-    console.log('Thoát chương trình ');
-}
-
-function hienThiSanPham(products) {
-    for (i = 0; i < products.length; i++) {
-
-        console.log(" Id " + products[i].id + " Name " + products[i].name + " Quantity: " + products[i].quantity + " Price " + products[i].price + " Date " + products[i].date);
-    }
-
-
-}
-
-function xoaSanPhamTheoTen(baseProductLists) {
-    var name = readlineSync.question(' Name: ');
-    console.log(name);
-    var index = -1;
-    for (var i = 0; i < baseProductLists.length; i++) {
-        if (baseProductLists[i].name == name) {
-            index = i;
-        }
-        if (i != -1) {
-            baseProductLists.splice(index, 1);
-        } else {
-            console.log('Khong ton tai san pham nay');
-        }
-        return baseProductLists;
-
-    }
-}
-
-function sapXeptheoGiaTien(baseProductLists) {
-    baseProductLists.sort(function(a, b) {
-        return a.price - b.price;
+    fs.appendFile("Products.xls", data, function(err) {
+        console.log("Hoan Thanh");
     });
 
-    return baseProductLists;
-
 }
 
-function sapXepTheoThoiGian(baseProductLists) {
-    baseProductLists.sort(function(a, b) {
-        var strDate1 = chuyenDoiDinhDangNgayThang(a.date);
-        var strDate2 = chuyenDoiDinhDangNgayThang(b.date);
-        var date1 = new Date(strDate1);
-        var date2 = new Date(strDate2);
-
-        return date1.getTime() - date2.getTime();
-    });
-    console.log(baseProductLists);
-
-    return baseProductLists;
-}
-
-function chuyenDoiDinhDangNgayThang(base) {
-    var newFormat = base.split("/");
-    newFormat = newFormat.reverse();
-    newFormat = newFormat.join("-");
-
-    return newFormat;
-}
-
-//c1
-function tongTien() {
-    var sumMoney = 0;
-
-    sumMoney = listProducts.reduce(function(a, b) {
-        return a + (b.quantity * b.price);
-    }, 0);
-    console.log(sumMoney);
-    return sumMoney;
-}
-tongTien(listProducts);
-
-//c2 
-function tinhTongTien(Total) {
-    var sum = 0;
-
-    for (var i = 0; i < Total.length; i++) {
-        sum += Total[i].price * Total[i].quantity;
-    }
-    console.log(sum);
-    return tinhTongTien;
-
-}
-tinhTongTien(listProducts);
+xuatFileExCel(listProducts);
