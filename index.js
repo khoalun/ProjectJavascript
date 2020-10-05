@@ -566,4 +566,3 @@ function xuatFileExCel(Product) {
 
 }
 
-xuatFileExCel(listProducts);
